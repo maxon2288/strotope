@@ -1,0 +1,338 @@
+.response__company{
+	color: #393939;
+	font-size: 30px;
+	line-height: 32px;
+	font-weight: 700;
+	margin-bottom: 19px;	
+	padding-bottom: 8px;	
+	border-bottom: 1px solid  #d8d8d8;	
+}
+.inner-block__main_reviews{
+	border-bottom: none;
+}
+.reviews__title{
+	padding-top: 29px;
+	padding-bottom: 0px;
+	color: #414141;
+	font-size: 48px;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-family:'PF Agora Sans Pro';
+}
+.main-block__top_reviews{
+	padding-bottom: 20px;
+}
+.box-sort{
+	margin-bottom: 40px;
+}
+.box-sort__title{
+	position: relative;
+	top: 30px;
+	color: #393939;
+	font-size: 24px;
+	line-height: 28px;
+	font-weight: 700;
+	text-align: right;
+}
+.box-sort__item{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: -4px;
+	width: 260px;
+	position: relative;
+	&:first-child{
+		width: 33.79%;
+		padding: 0 89px 0 0;
+	}
+}
+.filter__title{
+	padding-bottom: 2px;
+}
+.filter__info{
+	width: 100%;
+	background-color: white;
+	border: 1px solid rgba(217, 217, 217, 0.66);
+	height: 41px;
+	color: #393939;
+	font-size: 18px;
+	line-height: 19px;
+	font-weight: 100;
+	padding: 10px 14px 8px;
+	position: relative;
+	cursor: pointer;
+	transition: all 0.2s;
+	&:hover{
+		color: #6daaab;
+	}
+	span{
+		font-weight: 700;
+	}
+	&:before{
+		position: absolute;
+		content: '';
+		width: 0;
+		height: 0;
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-top: 8px solid #959595;
+		right: 14px;
+		top: 15px;
+	}
+	&.active{
+		&:before{
+			transform: rotate(180deg);
+		}
+	}
+}
+.box-sort__item{
+	&.active{
+		.filter__drop{
+			left: 0;
+			opacity: 1;
+			&_rating{
+				left: 58px;
+			}
+		}
+	}
+}
+.box-sort__item_rating{
+	margin-left: 16px;
+}
+.filter__drop{
+	background: #fff;
+	width: 321px;
+	border: 1px solid #e1e1e1;
+	left: 0;
+	position: absolute;
+	top: 68px;
+	z-index: 10;
+	display: none;
+	transition: opacity 0.2s;
+	&_rating{
+
+		.filter__chek-list{
+			padding-top: 16px;	
+		}
+	}
+}
+.filter__chek-list{
+	list-style-type: none;
+}
+.filter__top{
+	padding: 10px 12px 13px;
+	border-bottom: 1px solid #e1e1e1;
+
+}
+.filter__input{
+	font-size: 18px;
+	opacity: 1;
+	font-weight: 100;
+	line-height: 18px;
+	font-family: "PF Agora Sans Pro";
+	font-style: italic;
+	width: 100%;
+}
+.filter__input::-webkit-input-placeholder { color: #393939 !important;
+	font-size: 18px;
+	opacity: 1;
+	font-weight: 100;
+	line-height: 18px;}
+	.filter__input:-ms-input-placeholder { color: #393939 !important;
+		font-size: 18px;
+		opacity: 1;
+		font-weight: 100;
+		line-height: 18px; }
+		.filter__input::-ms-input-placeholder { color: #393939 !important;
+			font-size: 18px;
+			opacity: 1;
+			font-weight: 100;
+			line-height: 18px; }
+			.filter__input::placeholder { color: #393939 !important;
+				font-size: 18px;
+				opacity: 1;
+				font-weight: 100;
+				line-height: 18px; }
+
+				input[type="checkbox"]{
+					position: absolute;
+					left: -1000000%;
+				}
+				.filter__chek{
+	// list-style-type: none;	
+	// margin-top: 20px;	
+
+	&-list{
+		padding-left: 13px;
+		padding-top: 22px;
+		padding-bottom: 30px;	
+	}
+	&-item{
+		margin-bottom: 9px;
+		// + .list-radio__item{
+		// 	margin-top: 10px;	
+		// }
+	}
+
+	input{
+		position: absolute;	
+		left: -100000px;	
+	}
+}
+input[type="checkbox"]:checked{
+	+ .label-text{
+		&:before{
+			
+		}
+		&:after{
+			content: '	';
+			position: absolute;	
+			width: 16px;	
+			height: 14px;	
+			// border-left: 	2px solid green;
+			// border-bottom: 	2px solid green;
+			left: 4px;
+			top: 5px;
+			// transform: rotate(-45deg);
+			z-index: 2;	
+			    background: url(../img/sprite.png) no-repeat -32px 0
+		}
+	}
+}
+.label-text{
+	padding-left: 33px;	
+	padding-top: 2px;	
+	padding-bottom: 5px;
+	position: relative;	
+	cursor: pointer;	
+	transition: all 	0.3s;
+	color: #393939;
+	font-size: 18px;
+	font-weight: 700;
+	&:before{
+		content: '';
+		position: absolute;	
+		width: 24px;
+		height: 24px;
+		background-color: white;
+		border: 1px solid #e1e1e1;	
+		left: 0;	
+		top: 0px;	
+		z-index: 2;	
+	}	
+	&:hover{
+		color: #6daaab;
+	}
+}
+.label-text_rating{
+	width: 163px;
+	height: 24px;
+	display: block;
+	background-image: url(../img/raiting-sprite.jpg);
+	background-position: 33px 0px;
+	background-repeat: no-repeat;
+	top: 2px;	
+	opacity: 1;	
+	transition: 	opacity 0.2s;
+	&:hover{
+		opacity: 0.8;
+	}
+}
+.filter__chek-item{
+
+	&:nth-child(2){
+		.label-text_rating{
+			background-position: 33px -32px;
+		}
+	}
+		&:nth-child(3){
+		.label-text_rating{
+			background-position: 33px -66px;
+		}
+	}
+	&:nth-child(4){
+		.label-text_rating{
+			background-position: 33px -99px;
+		}
+	}
+		&:nth-child(5){
+		.label-text_rating{
+			background-position: 33px -130px;
+		}
+	}
+		&:nth-child(6){
+		.label-text_rating{
+			background-position: 33px -164px;
+		}
+	}
+		&:nth-child(7){
+		.label-text_rating{
+			background-position: 33px -199px;
+		}
+	}
+		&:nth-child(8){
+		.label-text_rating{
+			background-position: 33px -230px;
+		}
+	}
+		&:nth-child(9){
+		.label-text_rating{
+			background-position: 33px -260px;
+		}
+	}
+		&:nth-child(10){
+		.label-text_rating{
+			background-position: 33px -295px;
+		}
+	}
+}
+.responses_reviews{
+	// padding-top: 70px;
+
+}
+.response-info_reviews{
+	margin-bottom: 89px;
+}
+.response-company__edit{
+	margin-top: 10px;
+	display: inline-block;
+	border-bottom: 1px solid;
+	font-size: 18px;
+	line-height: 18px;
+}
+@media screen and (max-width: 1024px) {
+	.box-sort__title{
+		text-align: left;
+	}
+	.box-sort{
+		margin-bottom: 20px;
+	}
+	.box-sort__item:first-child{
+		width: auto;
+		padding-right: 30px;
+	}
+}
+@media screen and (max-width: 767px){
+	.box-sort__item:first-child{
+		display: block;
+		margin-right: 0;
+	}
+	.box-sort__title{
+		top: 0;
+	}
+	.inner-block__main_reviews{
+		padding-top: 0;
+	}
+	.box-sort__item{
+		display: block;
+		width: 100%;
+	}
+	.filter__drop{
+		width: 100%;
+	}
+	.box-sort__item_rating{
+		margin-left: 0;
+	}
+	.box-sort__item{
+		margin-top: 10px;
+	}
+}
