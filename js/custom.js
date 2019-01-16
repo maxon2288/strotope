@@ -200,8 +200,137 @@
 		// masked input
 
 		// validation
-		if ($(".js-validation-1").lenght) {
-			$(".js-validation-1").validate({
+		$(".js-validation-complaint").each(function() {
+			var it = $(this);
+			it.validate({
+				rules:{
+					email:{
+						required:true,
+						email:true
+					}
+				},
+				messages: {
+					required: true,
+					email:"неправильный email"
+				},
+				errorPlacement: function (error, element) {
+				},
+				submitHandler: function() {
+					console.log('fdsafsad');
+					it.find("input, textarea").val('');
+				},  
+			});
+
+		});
+		$(".js-validation-1").each(function() {
+			var it = $(this);
+			it.validate({
+				rules:{
+					email:{
+						required:true,
+						email:true
+					}
+				},
+				messages: {
+					required: true,
+					email:"неправильный email"
+				},
+				errorPlacement: function (error, element) {
+				},
+				submitHandler: function() {
+					console.log('fdsafsad');
+					it.find("input, textarea").val('');
+				},  
+			});
+
+		});
+
+		
+		console.log('ffsfs');
+
+		$(".js-validation-2").each(function() {
+			var it = $(this);
+			it.validate({
+				rules:{
+					/*
+					phone:{
+						required:true,
+						minlength:10,
+						maxlength:10,
+						phoneUS:true
+					},
+					*/
+					email:{
+						required:true,
+						email:true
+					},
+					name_feedback:{
+						required:true,
+					},
+					company_feedback:{
+						required:true,
+					},
+					comment_feedback:{
+						required:true,
+					},
+				},
+				messages: {
+					email:"неправильный email",
+					phone:"неправильный номер"
+				},
+				errorPlacement: function (error, element) {
+				},
+				submitHandler: function() {
+					console.log('fdsafsad');
+					it.find("input, textarea").val('');
+				},  
+			});
+
+		});
+
+		$(".js-validation-3").each(function() {
+			var it = $(this);
+			it.validate({
+				rules:{
+					/*
+					phone:{
+						required:true,
+						minlength:10,
+						maxlength:10,
+						phoneUS:true
+					},
+					*/
+					email_tz:{
+						required:true,
+						email:true
+					},
+					name_tz:{
+						required:true,
+					},
+					company_tz:{
+						required:true,
+					},
+					file_tz:{
+						required:true,
+					},
+				},
+				messages: {
+					email:"неправильный email",
+					phone:"неправильный номер"
+				},
+				errorPlacement: function (error, element) {
+				},
+				submitHandler: function() {
+					console.log('fdsafsad');
+					it.find("input, textarea").val('');
+				},  
+			});
+
+		});
+
+		$(".js-validation-4").each(function() {
+			var it = $(this);
+			it.validate({
 				rules:{
 					email:{
 						required:true,
@@ -210,163 +339,181 @@
 				},
 				messages: {
 					email:"неправильный email"
-				}
+				},
+				errorPlacement: function (error, element) {
+				},
+				submitHandler: function() {
+					console.log('fdsafsad');
+					it.find("input, textarea").val('');
+				},  
 			});
-		};
 
-		$(".js-validation-complaint").validate({
-			rules:{
-				complaint:{
-					required:true,
-				},
-			}
 		});
 
-		$(".js-validation-2").validate({
-			rules:{
-				/*
-				phone:{
-					required:true,
-					minlength:10,
-					maxlength:10,
-					phoneUS:true
+		$(".js-validation-5").each(function() {
+			var it = $(this);
+			it.validate({
+				rules:{
+					phone:{
+						required:true,
+					},
+					compamy_name:{
+						required:true,
+					},
+					desc: {
+						required: true,
+						maxlength: 150,
+					},
+					fulldesc: {
+						required: true,
+						maxlength: 150,
+					},
+					year:{
+						digits: true,
+					},
+					count:{
+						digits: true,
+						required: true,
+					},
 				},
-				*/
-				email:{
-					required:true,
-					email:true
+				messages: {
+					// phone:"неправильный номер",
+					url_site: "неправильный url caйта",
+					url_inst: "неправильный url Instagram",
+					url_vk: "неправильный url Вконтакте",
+					url_fb: "неправильный url Facebook",
+					url_tw: "неправильный url Twitter",
+	
 				},
-				name_feedback:{
-					required:true,
+				errorPlacement: function (error, element) {
 				},
-				company_feedback:{
-					required:true,
-				},
-				comment_feedback:{
-					required:true,
-				},
-			},
-			messages: {
-				email:"неправильный email",
-				phone:"неправильный номер"
-			}
-		});
-		$(".js-validation-3").validate({
-			rules:{
-				/*
-				phone:{
-					required:true,
-					minlength:10,
-					maxlength:10,
-					phoneUS:true
-				},
-				*/
-				email_tz:{
-					required:true,
-					email:true
-				},
-				name_tz:{
-					required:true,
-				},
-				company_tz:{
-					required:true,
-				},
-				file_tz:{
-					required:true,
-				},
-			},
-			messages: {
-				email:"неправильный email",
-				phone:"неправильный номер"
-			}
-		});
-		$(".js-validation-4").validate({
-			rules:{
-				email:{
-					required:true,
-					email:true
-				}
-			},
-			messages: {
-				email:"неправильный email"
-			}
-		});
-		
-		$(".js-validation-5").validate({
-			rules:{
-				phone:{
-					required:true,
-					// minlength:22,
-					// maxlength:22,
-					// phoneUS:true
-				},
-				compamy_name:{
-					required:true,
-				}
-			},
-			messages: {
-				// phone:"неправильный номер",
-				url_site: "неправильный url caйта",
-				url_inst: "неправильный url Instagram",
-				url_vk: "неправильный url Вконтакте",
-				url_fb: "неправильный url Facebook",
-				url_tw: "неправильный url Twitter",
+				submitHandler: function() {
+					console.log('fdsafsad');
+					it.find("input, textarea").val('');
+				},  
+			});
 
-			}
 		});
-		
-		$(".js-validation-6").validate({
-			rules:{
-				/*
-				phone:{
-					required:true,
-					minlength:10,
-					maxlength:10,
-					phoneUS:true
+
+		$(".js-validation-6").each(function() {
+			var it = $(this);
+			it.validate({
+				rules:{
+					/*
+					phone:{
+						required:true,
+						minlength:10,
+						maxlength:10,
+						phoneUS:true
+					},
+					*/
+					email:{
+						required:true,
+						email:true
+					},
+					name:{
+						required:true,
+					},
+					service:{
+						required:true,
+					},
+					photo:{
+						required:true,
+					},
+					review:{
+						required:true,
+					},
 				},
-				*/
-				email:{
-					required:true,
-					email:true
+				messages: {
+					email:"неправильный email",
+					phone:"неправильный номер",
 				},
-				name:{
-					required:true,
+				errorPlacement: function (error, element) {
 				},
-				service:{
-					required:true,
-				},
-				photo:{
-					required:true,
-				},
-				review:{
-					required:true,
-				},
-			},
-			messages: {
-				email:"неправильный email",
-				phone:"неправильный номер",
-			}
+				submitHandler: function() {
+					console.log('fdsafsad');
+					it.find("input, textarea").val('');
+				},  
+			});
+
 		});
-		$(".js-validation-7").validate({
-			rules:{
-				/*
-				phone:{
-					required:true,
-					minlength:10,
-					maxlength:10,
-					phoneUS:true
+
+		$(".js-validation-7").each(function() {
+			var it = $(this);
+			it.validate({
+				rules:{
+					/*
+					phone:{
+						required:true,
+						minlength:10,
+						maxlength:10,
+						phoneUS:true
+					},
+					*/
+					email:{
+						required:true,
+						email:true
+					}
 				},
-				*/
-				email:{
-					required:true,
-					email:true
-				}
-			},
-			messages: {
-				email:"неправильный email",
-				phone:"неправильный номер"
-			}
+				messages: {
+					email:"неправильный email",
+					phone:"неправильный номер"
+				},
+				errorPlacement: function (error, element) {
+				},
+				submitHandler: function() {
+					console.log('fdsafsad');
+					it.find("input, textarea").val('');
+				},  
+			});
+
 		});
+
+		$(".js-validation-5").each(function() {
+			var it = $(this);
+			it.validate({
+				rules:{
+					phone:{
+						required:true,
+					},
+					compamy_name:{
+						required:true,
+					},
+					desc: {
+						required: true,
+						maxlength: 150,
+					},
+					fulldesc: {
+						required: true,
+						maxlength: 150,
+					},
+					year:{
+						digits: true,
+					},
+					count:{
+						digits: true,
+						required: true,
+					},
+				},
+				messages: {
+					// phone:"неправильный номер",
+					url_site: "неправильный url caйта",
+					url_inst: "неправильный url Instagram",
+					url_vk: "неправильный url Вконтакте",
+					url_fb: "неправильный url Facebook",
+					url_tw: "неправильный url Twitter",
+	
+				},
+				errorPlacement: function (error, element) {
+				},
+				submitHandler: function() {
+					console.log('fdsafsad');
+					it.find("input, textarea").val('');
+				},  
+			});
+
+		});
+
 		// validation
 	});
 /*----------doc ready eof----------*/

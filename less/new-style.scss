@@ -1,0 +1,5 @@
+input, textarea {
+    &.valid{
+        border: 1px solid green !important;
+    }
+}

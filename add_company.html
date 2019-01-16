@@ -7,6 +7,7 @@
     <title>Stroyreit - user cabinet</title>
     <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/new-style.css">
     <!--[if lt IE 9]><script src="js/html5.js"></script><![endif]-->
 </head>
 <body class="loaded">
@@ -91,7 +92,7 @@
 				<div class="inner__main">
                     <!-- BEGIN ADD COMPANY -->
                     <div class="add-company">
-                        <form class="js-validation-5">
+                        <form action="#" class="js-validation-5">
                             <div class="form-block">
                                 <div class="form-block__cols">
                                     <div class="form-block__left">
@@ -104,11 +105,11 @@
                                                 <div class="form__cols form__cols_mod">
                                                     <div class="form__item">
                                                         <label class="form__label form__label_important">Год основания</label>
-                                                        <input class="input-2" type="text" required>
+                                                        <input class="input-2" type="text" name="year" required>
                                                     </div>
                                                     <div class="form__item">
                                                         <label class="form__label">Кол-во сотрудников</label>
-                                                        <input class="input-2" type="text">
+                                                        <input class="input-2" type="text" name="count">
                                                     </div>
                                                     <div class="form__item">
                                                         <label class="form__label">URL сайта</label>
@@ -117,11 +118,11 @@
                                                 </div>
                                                 <div class="form__item">
                                                     <label class="form__label">Краткое описание <span>(не более 150 символов)</span></label>
-                                                    <textarea class="textarea-1"></textarea>
+                                                    <textarea class="textarea-1" name="desc" required></textarea>
                                                 </div>
                                                 <div class="form__item">
                                                     <label class="form__label">Подробное описание <span>(не более 150 символов)</span></label>
-                                                    <textarea class="textarea-1"></textarea>
+                                                    <textarea class="textarea-1" name="fullDesc" required></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -140,7 +141,7 @@
                                             </div>
                                             <div class="form__item">
                                                 <label class="form__label">Адрес</label>
-                                                <textarea class="textarea-1"></textarea>
+                                                <textarea class="textarea-1" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -479,5 +480,6 @@
     <script src="js/fancybox.js" defer></script>
     <script src="js/rating.js" defer></script>
     <script src="js/custom.js" defer></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
