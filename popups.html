@@ -141,25 +141,25 @@
                     <p class="form__title">Обратная связь</p>
                     <p class="form__text">Для того, чтобы связаться с нами, пожалуйста, заполните все обязательные поля формы, выберите тип обращения и укажите подробности в комментариях.</p>
                 </div>
-                <form class="js-validation-7">
+                <form class="js-validation-7    ">
                     <div class="form__cols">
                         <div class="form__item">
                             <label class="form__label form__label_important">Представьтесь, пожалуйста</label>
-                            <input class="input-2" type="text">
+                            <input class="input-2" name="name" type="text">
                         </div>
                         <div class="form__item">
                             <label class="form__label">URL сайта</label>
-                            <input class="input-2" type="url">
+                            <input class="input-2" name="url" type="url">
                         </div>
                     </div>
                     <div class="form__cols">
                         <div class="form__item">
                             <label class="form__label form__label_important">Название вашей компании</label>
-                            <input class="input-2" type="text">
+                            <input class="input-2" name="company_name" type="text">
                         </div>
                         <div class="form__item">
                             <label class="form__label">Контактный телефон</label>
-                            <input class="input-2 js-masked" type="tel" name="phone">
+                            <input class="input-2 js-masked" name="phone" type="tel" name="phone">
                         </div>
                     </div>
                     <div class="form__cols">
@@ -181,7 +181,7 @@
                     </div>
                     <div class="form__item">
                         <label class="form__label form__label_important">Комментарии</label>
-                        <textarea class="textarea-1"></textarea>
+                        <textarea class="textarea-1" name="comment"></textarea>
                     </div>
                     <button class="form__button button">Связаться</button>
                     <div class="checkbox checkbox_small">
@@ -294,6 +294,7 @@
     </div>
     <!-- POPUPS END -->
     <script src="js/jquery-3.2.1.min.js" defer></script>
+    <script src="js/fine-uploader.core.min.js" defer></script>
     <script src="js/jquery-migrate-1.4.1.min.js" defer></script>
     <script src="js/jquery.validate.min.js" defer></script>
     <script src="js/additional-methods.min.js" defer></script>
