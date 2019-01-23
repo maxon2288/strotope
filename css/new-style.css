@@ -85,6 +85,12 @@ input.valid, textarea.valid { border: 1px solid green !important; }
 
 select.valid .jq-selectbox__select-text { border: 1px solid green !important; }
 
+.contacts-info { position: relative; }
+
+#map { width: 100%; -webkit-transition: 0.3s; -o-transition: 0.3s; transition: 0.3s; display: -webkit-box; display: -ms-flexbox; display: flex; height: 400px; top: 100%; left: 0; z-index: 100; display: none; max-width: 100%; margin-bottom: 60px; }
+
+#map.visible { display: -webkit-box; display: -ms-flexbox; display: flex; }
+
 .main-block-articles h1 { max-width: 100%; }
 
 .filter__drop { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; display: none; }

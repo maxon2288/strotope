@@ -12,6 +12,24 @@ select {
         }
     }
 }
+.contacts-info {
+    position: relative;
+}
+#map {
+    width: 100%;
+    transition: 0.3s;
+    display: flex;
+    height: 400px;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    display: none;
+    max-width: 100%;    
+    margin-bottom: 60px;
+    &.visible {
+        display: flex;
+    }
+}
 .main-block-articles h1{
     max-width: 100%;
 }

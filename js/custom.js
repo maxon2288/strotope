@@ -113,7 +113,6 @@ $.validator.setDefaults({
 				};
 				reader.readAsDataURL(input.files[0]);
 			}
-			console.log(input.files[0]);
 		}
 
 		$(".js-remove-button").click(function() {
@@ -323,35 +322,15 @@ $.validator.setDefaults({
 
 		// validation
 
-		$('input[name="phone"]').mask('+0 (000) 000 0000');
-
-		jQuery.extend(jQuery.validator.messages, {
-			required: "Это поле обязательно.",
-			remote: "Please fix this field.",
-			email: "Неправильный E-mail.",
-			url: "неправильный URL.",
-			date: "неправильная дата.",
-			dateISO: "Please enter a valid date (ISO).",
-			number: "Please enter a valid number.",
-			digits: "используйте только числа.",
-			creditcard: "Please enter a valid credit card number.",
-			equalTo: "Пароли не совпадают",
-			accept: "Please enter a value with a valid extension.",
-			maxlength: jQuery.validator.format("Введите не больше {0} символов."),
-			minlength: jQuery.validator.format("Введите не меньше {0} символов."),
-			rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
-			range: jQuery.validator.format("Please enter a value between {0} and {1}."),
-			max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
-			min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
-		});
+		
 		
 		$.validator.addMethod("regx", function(value, element, regexpr) {      
 			return regexpr.test(value);
 		}, "Please enter a valid pasword.");
 
-
 		$('body').on('click','.object__edit', function(e)  {
-			var it = $(this).closest($('.object:nth-child('+itis.find('#iterx').val()+')'));
+			var fdsa = 1;
+			var it = $(this).closest(".object-video");
 			e.preventDefault();
 			var link = it.find(".object__image").attr("href");
 			// var img = it.find(".object__image").attr("style");
@@ -366,23 +345,30 @@ $.validator.setDefaults({
 			$("#iter").val(iter);
 		});
 
+		
+
 		///Объекты -----------------------------------  
 
 		$('body').on('click','.object__edit-object', function(e)  {
-			var it = $(this).closest($('.object-img:nth-child('+itis.find('#iterx').val()+')'));
+			var it = $(this).closest(".object-img");
 			e.preventDefault();
 			// var link = it.find(".object__image").attr("href");
 			// var img = it.find(".object__image").attr("style");
 			var title = it.find(".object__title").text();
 			var addres = it.find(".object__text").text();
 			$(".open-edit-object-popup").trigger("click");
-			$("#name_obj").val(title);
-			$("#addres_obj").val(addres);
+			$("#edit_objectName").val(title);
+			$("#edit_objectAddres").val(addres);
+			
 			// $("#url_fieldx").val(link);
 
 			var iter = +$(this).closest('.object-img').index()+1;
 			$("#iterx").val(iter);
 		});
+		$(document).on('click', ".object__delete", function(e){
+			e.preventDefault()
+			$(this).closest(".object").remove()
+		})
 
 	
 		///Объекты -----------------------------------
@@ -457,4 +443,27 @@ var handler1 = function(){
 		}
 	});
 	// esc click
+
+	
+	ymaps.ready(init);
+	function init () {
+		var x = $(".map-open").data('x');
+		var y = $(".map-open").data('y');
+		var myMap = new ymaps.Map("map", {
+		center: [x, y],
+		zoom: 16,
+		controls: ['zoomControl']
+	}),
+	myPlacemark = new ymaps.Placemark([x, y]);
+	myMap.geoObjects.add(myPlacemark);
+	myMap.behaviors.disable('scrollZoom');
+
+	$(".map-open").click(function(e) {
+		e.preventDefault()
+		$("#map").toggleClass("visible");
+	});
+	
+}
+	
+	
 })(jQuery);

@@ -1,6 +1,27 @@
 $(document).ready(function() {
 
-    console.log("fdsafd");
+    $('input[name="phone"]').mask('+0 (000) 000 0000');
+
+		jQuery.extend(jQuery.validator.messages, {
+			required: "Это поле обязательно.",
+			remote: "Please fix this field.",
+			email: "Неправильный E-mail.",
+			url: "неправильный URL.",
+			date: "неправильная дата.",
+			dateISO: "Please enter a valid date (ISO).",
+			number: "Please enter a valid number.",
+			digits: "используйте только числа.",
+			creditcard: "Please enter a valid credit card number.",
+			equalTo: "Пароли не совпадают",
+			accept: "Please enter a value with a valid extension.",
+			maxlength: jQuery.validator.format("Введите не больше {0} символов."),
+			minlength: jQuery.validator.format("Введите не меньше {0} символов."),
+			rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
+			range: jQuery.validator.format("Please enter a value between {0} and {1}."),
+			max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
+			min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
+		});
+
     $(".add-video-form").each(function() {
         var it = $(this);
         it.validate({
@@ -31,10 +52,10 @@ $(document).ready(function() {
                 var myregexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
                 var yt_id = link.match(myregexp)[1];
                 var yt_img = "https://img.youtube.com/vi/" + yt_id + "/0.jpg";
-                var yt_link = "https://www.youtube.com/embed/" + yt_id ;
+                var yt_link = "https://www.youtube.com/embed/" + yt_id;
                 // $('.object__image-link').attr("href", yt_link);
                 // $('.object__image-link').css("background-image", "url("+yt_img+ ")");
-                $("#objects-videos").append('<li class="object"><a class="object__image" data-fancybox href="'+ yt_link +'" style="background-image: url('+ yt_img +')"></a><h3 class="object__title">'+ name +'</h3><p class="object__text">'+ addres +'</p><div class="object__links"><a class="object__edit" href="#edit-video" data-fancybox>Редактировать</a><a class="object__delete" href="#">Удалить</a></div></li>');
+                $("#objects-videos").append('<li class="object object-video"><a class="object__image" data-fancybox href="'+ yt_link +'" style="background-image: url('+ yt_img +')"></a><h3 class="object__title">'+ name +'</h3><p class="object__text">'+ addres +'</p><div class="object__links"><a class="object__edit" href="#edit-video" data-fancybox>Редактировать</a><a class="object__delete" href="#">Удалить</a></div></li>');
             },
         });
     });
@@ -61,9 +82,8 @@ $(document).ready(function() {
             // 	youtube:"неправильный email"
             // },
             submitHandler: function() {
-                console.log(itis.find('#iter').val())
 
-                var it = $('.object:nth-child('+itis.find('#iter').val()+')');
+                var it = $('.object-video:nth-child('+itis.find('#iter').val()+')');
                 $(".fancybox-button--close").trigger("click");
                 var linkx = $("#url_fieldx").val();
                 var namex = $("#name_fieldx").val();
@@ -100,13 +120,11 @@ $(document).ready(function() {
                 var name = $("#objectName").val();
                 var addres = $("#objectAddres").val();
                 it.find('input').val("");
-                console.log(addres);
 
                 var imgUrl= $(".photo-item-img").attr("href");
                 
                 $(".fancybox-button--close").trigger("click");
                 $("#objects-images").append('<li class="object object-img"><a class="object__image" data-fancybox style="background-image: url('+imgUrl+');" href="'+imgUrl+'"></a><h3 class="object__title">'+name+'</h3><p class="object__text">'+addres+'</p><div class="object__links"><a class="object__edit-object" href="#edit-object-form">Редактировать</a><a class="object__delete" href="#">Удалить</a></div></li>');
-                // console.log($(".object-img:nth-child(2) .photo__image").attr("style"))
                 var fdsajklfdsa = $(".js-remove").attr("href");
                 $("#edit_objectName").val(name)
                 $("#edit_objectAddres").val(addres)
@@ -127,25 +145,18 @@ $(document).ready(function() {
                 },
             },
             
-            // messages: {
-            // 	required: true,
-            // 	youtube:"неправильный email"
-            // },
             submitHandler: function() {
-                var name = $("#objectName").val();
-                var addres = $("#objectAddres").val();
-                it.find('input').val("");
-                console.log(addres);
-
-                var imgUrl= $(".photo-item-img").attr("href");
-                console.log();
+                var it = $('.object-img:nth-child('+itis.find('#iterx').val()+')');
                 
+                // var gavno = itis.find('#iterx').val();
+                var it = $('.object-img:nth-child('+itis.find('#iterx').val()+')');
                 $(".fancybox-button--close").trigger("click");
-                $("#objects-images").append('<li class="object object-img"><a class="object__image" data-fancybox style="background-image: url('+imgUrl+');" href="'+imgUrl+'"></a><h3 class="object__title">'+name+'</h3><p class="object__text">'+addres+'</p><div class="object__links"><a class="object__edit-object" href="#edit-object-form">Редактировать</a><a class="object__delete" href="#">Удалить</a></div></li>');
-                // console.log($(".object-img:nth-child(2) .photo__image").attr("style"))
-                var fdsajklfdsa = $(".js-remove").attr("href");
-                
-                
+                var namex = $("#edit_objectName").val();
+                var addresx = $("#edit_objectAddres").val();
+                itis.find('input, textarea').val("");
+                it.find(".object__title").text(namex);
+                it.find(".object__text").text(addresx);
+                // var imgUrl= $(".photo-item-img").attr("href");
             },  
         });
     });
@@ -177,9 +188,10 @@ $(document).ready(function() {
     $(".new-form-sign").each(function() {
         var it = $(this);
         it.validate({
-            rles:{
-                video_name:{
+            rules:{
+                email:{
                     required:true,
+                    email: true,
                 },
                 video_addres:{
                     required:true,
@@ -320,43 +332,7 @@ $(document).ready(function() {
     $(".js-validation-5").each(function() {
         var it = $(this);
         it.validate({
-            rules:{
-                phone:{
-                    required:true,
-                    maxlength: 160,
-                },
-                compamy_name:{
-                    required:true,
-                },
-                desc: {
-                    required: true,
-                    maxlength: 150,
-                },
-                fulldesc: {
-                    required: true,
-                    maxlength: 150,
-                },
-                year:{
-                    digits: true,
-                },
-                url_site: {
-                    required: true,
-                    url: true,
-                },
-                count:{
-                    digits: true,
-                    required: true,
-                },
-            },
-            messages: {
-                // phone:"неправильный номер",
-                url_site: "неправильный url caйта",
-                url_inst: "неправильный url Instagram",
-                url_vk: "неправильный url Вконтакте",
-                url_fb: "неправильный url Facebook",
-                url_tw: "неправильный url Twitter",
-
-            },
+            
             submitHandler: function() {
                 ('fdsafsad');
                 it.find("input, textarea").val('');
@@ -409,29 +385,6 @@ $(document).ready(function() {
         var it = $(this);
         it.validate({
             rules:{
-                phone:{
-                    required:true,
-                },
-                email:{
-                    required:true,
-                    email:true
-                },
-                url: {
-                    url: true,
-                    required: true,	
-                },
-                name: {
-                    required: true,	
-                },
-                company_name: {
-                    required: true,	
-                },
-                comment: {
-                    required: true,	
-                },
-                name: {
-                    required: true,	
-                },
             },
             messages: {
                 email:"неправильный email",

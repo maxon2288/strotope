@@ -101,12 +101,12 @@
                                             <div class="form">
                                                 <div class="form__item">
                                                     <label class="form__label form__label_important">Название компании</label>
-                                                    <input class="input-2" type="text" name="compamy_name" required>
+                                                    <input class="input-2" type="text" name="compamy_name" >
                                                 </div>
                                                 <div class="form__cols form__cols_mod">
                                                     <div class="form__item">
                                                         <label class="form__label form__label_important">Год основания</label>
-                                                        <input class="input-2" type="text" name="year" required>
+                                                        <input class="input-2" type="text" name="year" >
                                                     </div>
                                                     <div class="form__item">
                                                         <label class="form__label">Кол-во сотрудников</label>
@@ -119,11 +119,11 @@
                                                 </div>
                                                 <div class="form__item">
                                                     <label class="form__label">Краткое описание <span>(не более 150 символов)</span></label>
-                                                    <textarea class="textarea-1" name="desc" required></textarea>
+                                                    <textarea class="textarea-1" name="desc" ></textarea>
                                                 </div>
                                                 <div class="form__item">
                                                     <label class="form__label">Подробное описание <span>(не более 150 символов)</span></label>
-                                                    <textarea class="textarea-1" name="fullDesc" required></textarea>
+                                                    <textarea class="textarea-1" name="fullDesc" ></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -147,7 +147,7 @@
                                             </div>
                                             <div class="form__item">
                                                 <label class="form__label">Адрес</label>
-                                                <textarea class="textarea-1" required></textarea>
+                                                <textarea class="textarea-1" ></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -452,7 +452,6 @@
                 </div>
 
                 <form action="#" class="add-object-form">
-                    <input type="hidden" name="iterx" id="iterx">
                     <div class="form__item">
                         <label class="form__label form__label_important">Название объекта</label>
                         <input class="input-2" type="text" name="nameObject" id="objectName">
@@ -494,7 +493,8 @@
                     <p class="form__title">Редактировать объект</p>
                 </div>
 
-                <form action="#" class="add-object-form">
+                <form action="#" class="edit-object-form">
+                    <input type="hidden" name="iterx" id="iterx">
                     <div class="form__item">
                         <label class="form__label form__label_important">Название объекта</label>
                         <input class="input-2" type="text" name="nameObject" id="edit_objectName">
