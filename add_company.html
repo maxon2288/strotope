@@ -92,6 +92,7 @@
 				<div class="inner__main">
                     <!-- BEGIN ADD COMPANY -->
                     <div class="add-company">
+
                         <form action="#" class="js-validation-5">
                             <div class="form-block">
                                 <div class="form-block__cols">
@@ -129,10 +130,15 @@
                                     </div>
                                     <div class="form-block__right">
                                         <div class="load-logo js-file">
-                                            <span class="load-logo__title">LOGO</span>
-                                            <a class="load-logo__link js-file-button" href="javascript:void(0);">Загрузить логотип</a>
-                                            <span class="load-logo__text">Рекомендуемый размер 720x480, <br>jpg или png до 500 кб</span>
-                                            <input type="file">
+                                            <div class="upload-file-container">
+                                                <span class="load-logo__title">LOGO</span>
+                                                <img id="image" src="#" alt="" />						
+                                                <div class="upload-file-container-text">
+                                                    <span class="load-logo__link js-file-button">Загрузить логотип</span>
+                                                </div>
+                                                <span class="load-logo__text">Рекомендуемый размер 720x480, <br>jpg или png до 500 кб</span>
+                                                <input type="file" name="pic[]" class="photo" id="imgInput" />
+                                            </div>
                                         </div>
                                         <div class="form">
                                             <div class="form__item">
@@ -175,16 +181,16 @@
                             <div class="add-company__edit">
                                 <section class="add-new">
                                     <h2 class="add-new__title">Выполненные объекты</h2>
-                                    <ul class="objects">
-                                        <li class="object">
-                                            <a class="object__image" href="https://source.unsplash.com/IvfoDk30JnI/1500x1000" style="background-image:url(img/examples/object.jpg);" data-fancybox></a>
+                                    <ul class="objects" id="objects-images">
+                                        <!-- <li class="object">
+                                            <a class="object__image" data-fancybox href="https://www.youtube.com/embed/o0AjFocxIRc"></a>
                                             <h3 class="object__title">ЖК “Два ангела”</h3>
                                             <p class="object__text">Большой Мясоостровский проезд, 8</p>
                                             <div class="object__links">
-                                                <a class="object__edit" href="#">Редактировать</a>
+                                                <a class="object__edit" href="#adit-video-form">Редактировать</a>
                                                 <a class="object__edit" href="#">Удалить</a>
                                             </div>
-                                        </li>
+                                        </li> -->
                                         <li class="object">
                                             <div class="add-photo">
                                                 <a class="add-photo__button" href="#add-object" data-fancybox>
@@ -197,23 +203,22 @@
                                                         </div>
                                                     </div>
                                                 </a>
-                                                <input type="file">
                                             </div>
                                         </li>
                                     </ul>
                                 </section>
                                 <section class="add-new">
                                     <h2 class="add-new__title">Видео</h2>
-                                    <ul class="objects">
-                                        <li class="object">
-                                            <a class="object__image" href="https://www.youtube.com/watch?v=_sI_Ps7JSEk" style="background-image:url(img/examples/object.jpg);" data-fancybox></a>
-                                            <h3 class="object__title">ЖК “Два ангела”</h3>
-                                            <p class="object__text">Большой Мясоостровский проезд, 8</p>
-                                            <div class="object__links">
-                                                <a class="object__edit" href="#">Редактировать</a>
-                                                <a class="object__edit" href="#">Удалить</a>
-                                            </div>
-                                        </li>
+                                    <ul class="objects" id="objects-videos">
+                                            <!-- <li class="object">
+                                                <a class="object__image object__image-link" href="" data-fancybox></a>
+                                                <h3 class="object__title">ЖК “Два ангела”</h3>
+                                                <p class="object__text">Большой Мясоостровский проезд, 8</p>
+                                                <div class="object__links">
+                                                    <a class="object__edit" href="#">Редактировать</a>
+                                                    <a class="object__edit" href="#">Удалить</a>
+                                                </div>
+                                            </li> -->
                                         <li class="object">
                                             <div class="add-photo">
                                                 <a class="add-photo__button" href="#add-video" data-fancybox>
@@ -283,6 +288,8 @@
         </footer>
         <!-- FOOTER END -->
     </div>
+    <div class="open-edit-video-popup" href="#edit-video" data-fancybox></div>
+    <div class="open-edit-object-popup" href="#edit-object-form" data-fancybox></div>
     <!-- BEGIN POPUPS -->
     <div class="popups">
         <!-- BEGIN POPUP -->
@@ -385,6 +392,57 @@
             <!-- TAB END -->
         </div>
         <!-- POPUP END -->
+        
+        <!-- BEGIN POPUP -->
+        <div class="popup" id="add-video">
+            <button class="popup__close js-close-popup"></button>
+            <div class="form">
+                <div class="form__top">
+                    <p class="form__title">Добавить видео</p>
+                </div>
+                <form action="#" class="add-video-form">
+                    <div class="form__item">
+                        <label class="form__label form__label_important">Название объекта</label>
+                        <input class="input-2" type="text" name="video_name" id="name_field">
+                    </div>
+                    <div class="form__item">
+                        <label class="form__label form__label_important">Адрес объекта</label>
+                        <input class="input-2" type="text" name="video_addres" id="addres_field">
+                    </div>
+                    <div class="form__item form__item_fixed">
+                        <label class="form__label form__label_important">URL видео</label>
+                        <input class="input-2" type="text" name="video_url" id="url_field">
+                    </div>
+                    <button class="form__button button">Добавить</button>
+                    
+                </form>
+            </div>
+        </div>
+        <div class="popup" id="edit-video">
+            <button class="popup__close js-close-popup"></button>
+            <div class="form">
+                <div class="form__top">
+                    <p class="form__title">Редактировать видео</p>
+                </div>
+                <form action="#" class="edit-video-form">
+                    <input type="hidden" name="iter" id="iter">
+                    <div class="form__item">
+                        <label class="form__label form__label_important">Название объекта</label>
+                        <input class="input-2" type="text" name="video_name" id="name_fieldx">
+                    </div>
+                    <div class="form__item">
+                        <label class="form__label form__label_important">Адрес объекта</label>
+                        <input class="input-2" type="text" name="video_addres" id="addres_fieldx">
+                    </div>
+                    <div class="form__item form__item_fixed">
+                        <label class="form__label form__label_important">URL видео</label>
+                        <input class="input-2" type="text" name="video_url" id="url_fieldx">
+                    </div>
+                    <button class="form__button button">Изменить</button>
+                    
+                </form>
+            </div>
+        </div>
         <!-- BEGIN POPUP -->
         <div class="popup" id="add-object">
             <button class="popup__close js-close-popup"></button>
@@ -392,36 +450,20 @@
                 <div class="form__top">
                     <p class="form__title">Добавить объект</p>
                 </div>
-                <form>
+
+                <form action="#" class="add-object-form">
+                    <input type="hidden" name="iterx" id="iterx">
                     <div class="form__item">
                         <label class="form__label form__label_important">Название объекта</label>
-                        <input class="input-2" type="text">
+                        <input class="input-2" type="text" name="nameObject" id="objectName">
                     </div>
                     <div class="form__item form__item_fixed">
                         <label class="form__label form__label_important">Адрес объекта</label>
-                        <input class="input-2" type="text">
+                        <input class="input-2" type="text" name="addresObject" id="objectAddres">
                     </div>
                     <div class="form__item">
                         <label class="form__label form__label_important">Фото <span>(размер не более 250 Кб)</span></label>
-                        <ul class="photos">
-                            <li class="photos__item js-remove">
-                                <a class="photos__image" href="img/examples/big-object.jpg" style="background-image:url(img/examples/small-object.jpg);" data-fancybox="new-gal-1"></a>
-                                <a class="photos__remove js-remove-button" href="javascript:void(0);">Удалить</a>
-                            </li>
-                            <li class="photos__item js-remove">
-                                <a class="photos__image" href="https://source.unsplash.com/IvfoDk30JnI/1500x1000" style="background-image:url(img/examples/small-object.jpg);" data-fancybox="new-gal-1"></a>
-                                <a class="photos__remove js-remove-button" href="javascript:void(0);">Удалить</a>
-                            </li>
-                            <li class="photos__item js-remove">
-                                <a class="photos__image" href="img/examples/big-object.jpg" style="background-image:url(img/examples/small-object.jpg);" data-fancybox="new-gal-1"></a>
-                                <a class="photos__remove js-remove-button" href="javascript:void(0);">Удалить</a>
-                            </li>
-                            <li class="photos__item js-remove">
-                                <div class="photos__image">
-                                    <a class="photos__image" href="img/examples/big-object.jpg" style="background-image:url(img/examples/small-object.jpg);" data-fancybox="new-gal-1"></a>
-                                </div>
-                                <a class="photos__remove js-remove-button" href="javascript:void(0);">Удалить</a>
-                            </li>
+                        <ul class="photos"> 
                             <li class="photos__item">
                                 <div class="add-photo js-file">
                                     <a class="add-photo__button js-file-button" href="javascript:void(0);">
@@ -434,40 +476,40 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <input type="file">
+                                    <input type="file" id="object-img-upload">
                                 </div>
                             </li>
+                            
                         </ul>
                     </div>
                     <button class="form__button button">Добавить</button>
                 </form>
+
             </div>
         </div>
-        <!-- POPUP END -->
-        <!-- BEGIN POPUP -->
-        <div class="popup" id="add-video">
+        <div class="popup" id="edit-object-form">
             <button class="popup__close js-close-popup"></button>
             <div class="form">
                 <div class="form__top">
-                    <p class="form__title">Добавить видео</p>
+                    <p class="form__title">Редактировать объект</p>
                 </div>
-                <form>
+
+                <form action="#" class="add-object-form">
                     <div class="form__item">
                         <label class="form__label form__label_important">Название объекта</label>
-                        <input class="input-2" type="text">
-                    </div>
-                    <div class="form__item">
-                        <label class="form__label form__label_important">Адрес объекта</label>
-                        <input class="input-2" type="text">
+                        <input class="input-2" type="text" name="nameObject" id="edit_objectName">
                     </div>
                     <div class="form__item form__item_fixed">
-                        <label class="form__label form__label_important">URL видео</label>
-                        <input class="input-2" type="url">
+                        <label class="form__label form__label_important">Адрес объекта</label>
+                        <input class="input-2" type="text" name="addresObject" id="edit_objectAddres">
                     </div>
                     <button class="form__button button">Добавить</button>
                 </form>
+
             </div>
         </div>
+        <!-- POPUP END -->
+        
         <!-- POPUP END -->
     </div>
     <!-- POPUPS END -->
@@ -481,6 +523,6 @@
     <script src="js/fancybox.js" defer></script>
     <script src="js/rating.js" defer></script>
     <script src="js/custom.js" defer></script>
-    <script src="js/main.js" defer></script>
+    <script src="js/new-validate.js" defer></script>
 </body>
 </html>

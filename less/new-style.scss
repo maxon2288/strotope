@@ -12,7 +12,6 @@ select {
         }
     }
 }
-
 .main-block-articles h1{
     max-width: 100%;
 }
@@ -23,4 +22,51 @@ select {
     &.visible{
         display: flex;
     }
+}
+.upload-file-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+}
+.ulogin-buttons-container {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: center !important;
+}
+
+.ulogin-buttons-container > div {
+    width: 67px !important ;
+    height: 67px !important;
+    display: block !important;
+    background: url(../img/sprite.png) !important;
+    background-size: 500px 500px !important;
+    margin: 20px !important;
+    &:nth-child(1) {
+        background-position: 0 -285px !important;
+    }
+    &:nth-child(2) {
+        background-position: 0 -358px !important;
+    }
+    &:nth-child(3) {
+        background-position: 0 -430px !important;
+    }
+}
+.objects {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.object__edit-object {
+    margin: 0 22px 5px 0;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 1;
+    color: #41acad;
+    border-bottom: 1px solid #41acad;
+    max-width: 100%;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

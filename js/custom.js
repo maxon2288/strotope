@@ -18,6 +18,40 @@ b.attr("data-mask-reverse")&&(e.reverse=!0);b.attr("data-mask-clearifnotmatch")&
 delete a.maskWatchers[this.selector];return this.each(function(){var b=a(this).data("mask");b&&b.remove().removeData("mask")})};a.fn.cleanVal=function(){return this.data("mask").getCleanVal()};a.applyDataMask=function(b){b=b||a.jMaskGlobals.maskElements;(b instanceof a?b:a(b)).filter(a.jMaskGlobals.dataMaskAttr).each(d)};h={maskElements:"input,td,span,div",dataMaskAttr:"*[data-mask]",dataMask:!0,watchInterval:300,watchInputs:!0,keyStrokeCompensation:10,useInput:!/Chrome\/[2-4][0-9]|SamsungBrowser/.test(window.navigator.userAgent)&&
 h("input"),watchDataMask:!1,byPassKeys:[9,16,17,18,36,37,38,39,40,91],translation:{0:{pattern:/\d/},9:{pattern:/\d/,optional:!0},"#":{pattern:/\d/,recursive:!0},A:{pattern:/[a-zA-Z0-9]/},S:{pattern:/[a-zA-Z]/}}};a.jMaskGlobals=a.jMaskGlobals||{};h=a.jMaskGlobals=a.extend(!0,{},h,a.jMaskGlobals);h.dataMask&&a.applyDataMask();setInterval(function(){a.jMaskGlobals.watchDataMask&&a.applyDataMask()},h.watchInterval)},window.jQuery,window.Zepto);
 
+$.validator.setDefaults({
+    // debug: true,
+    validClass: "valid",
+    errorClass: "error",
+    ignore: [],
+    messages: {},
+    errorPlacement: function(error, element) {},
+    success: function() {},
+    highlight: function(element) {
+        if (
+            $(element)
+                .attr("class")
+                .indexOf("valid")
+        ) {
+            $(element)
+                .addClass("error");
+        }
+    },
+    unhighlight: function(element) {
+        if (
+            $(element)
+                .attr("class")
+                .indexOf("valid")
+        ) {
+            $(element)
+                .removeClass("error")
+                .addClass("success");
+        }
+    }
+});
+
+
+
+
 (function($){
 	// viewport size
 	function viewport(){
@@ -40,25 +74,63 @@ h("input"),watchDataMask:!1,byPassKeys:[9,16,17,18,36,37,38,39,40,91],translatio
 	}
 	// footer
 
+	
 	/*----------begin doc ready----------*/
 	$(document).ready(function(){
+		var link = "https://www.youtube.com/watch?v=8igoqDZlm6g";
+		var myregexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
+		var yt_id = link.match(myregexp)[1];
+		var yt_img = "https://img.youtube.com/vi/" + yt_id + "/0.jpg";
+		var yt_link = "https://www.youtube.com/embed/" + yt_id ;
+		$('.img').attr("src", yt_img);
+		$('.link').attr("href", yt_link);
+		$("iframe").attr("src", yt_link);
 
-		var galleryUploader = new qq.FineUploader({
-            element: document.getElementById("qq-template-gallery"),
-            template: 'qq-template-gallery',
-            request: {
-                endpoint: '/server/uploads'
-            },
-            thumbnails: {
-                placeholders: {
-                    waitingPath: '/source/placeholders/waiting-generic.png',
-                    notAvailablePath: '/source/placeholders/not_available-generic.png'
-                }
-            },
-            validation: {
-                allowedExtensions: ['jpeg', 'jpg', 'gif', 'png']
-            }
-        });
+		function readURL(input) {
+
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+		
+				reader.onload = function (e) {
+					$('#image').attr('src', e.target.result);
+					$(".load-logo__title").css("display", "none");
+					$(".js-file-button").text("");
+				};
+		
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+		function readURLIMG(input) {
+
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+		
+				reader.onload = function (e) {
+					$(".photos").append('<li class="photos__item js-remove"><a class="photos__image photo-item-img" href="'+e.target.result+'" style="background-image:url('+e.target.result+');" data-fancybox="new-gal-1"></a><a class="photos__remove js-remove-button" href="javascript:void(0);">Удалить</a></li>');
+					// $(".photos__image")
+					// $(".load-logo__title").css("display", "none");
+					// $(".js-file-button").text("");
+				};
+				reader.readAsDataURL(input.files[0]);
+			}
+			console.log(input.files[0]);
+		}
+
+		$(".js-remove-button").click(function() {
+			alert('fdsafsda');
+		});	
+		
+		$("body").on("click", ".js-remove-button", function() {
+			$(this).closest(".js-remove").remove();
+		});
+
+		$("#object-img-upload").change(function() {
+			readURLIMG(this);
+		});
+		
+		$("#imgInput").change(function(){
+			readURL(this);
+		});
 
 
 		// ie fix
@@ -273,320 +345,49 @@ h("input"),watchDataMask:!1,byPassKeys:[9,16,17,18,36,37,38,39,40,91],translatio
 			min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
 		});
 		
-		$(".js-validation-complaint").each(function() {
-			var it = $(this);
-			it.validate({
-				rules:{
-					email:{
-						required:true,
-						email:true
-					},
-					complaint: {
-						required: true,
-					},
-				},
-				messages: {
-					required: true,
-					email:"неправильный email"
-				},
-				submitHandler: function() {
-					('fdsafsad');
-					it.find("input, textarea").val('');
-				},  
-			});
+		$.validator.addMethod("regx", function(value, element, regexpr) {      
+			return regexpr.test(value);
+		}, "Please enter a valid pasword.");
 
-		});
-		$(".new-form-sign").each(function() {
-			var it = $(this);
-			it.validate({
-				rules:{
-					email:{
-						required:true,
-						email:true
-					},
-					password:{
-						required:true,
-					}
-				},
-				submitHandler: function() {
-					('fdsafsad');
-					it.find("input, textarea").val('');
-				},  
-			});
 
+		$('body').on('click','.object__edit', function(e)  {
+			var it = $(this).closest($('.object:nth-child('+itis.find('#iterx').val()+')'));
+			e.preventDefault();
+			var link = it.find(".object__image").attr("href");
+			// var img = it.find(".object__image").attr("style");
+			var title = it.find(".object__title").text();
+			var addres = it.find(".object__text").text();
+			$(".open-edit-video-popup").trigger("click");
+			$("#name_fieldx").val(title);
+			$("#addres_fieldx").val(addres);
+			$("#url_fieldx").val(link);
+
+			var iter = +$(this).closest('.object').index()+1;
+			$("#iter").val(iter);
 		});
 
-		$(".js-validation-1").each(function() {
-			var it = $(this);
-			it.validate({
-				rules:{
-					email:{
-						required:true,
-						email:true
-					}
-				},
-				messages: {
-					email:"неправильный email"
-				},
-				submitHandler: function() {
-					('fdsafsad');
-					it.find("input, textarea").val('');
-				},  
-			});
+		///Объекты -----------------------------------  
 
+		$('body').on('click','.object__edit-object', function(e)  {
+			var it = $(this).closest($('.object-img:nth-child('+itis.find('#iterx').val()+')'));
+			e.preventDefault();
+			// var link = it.find(".object__image").attr("href");
+			// var img = it.find(".object__image").attr("style");
+			var title = it.find(".object__title").text();
+			var addres = it.find(".object__text").text();
+			$(".open-edit-object-popup").trigger("click");
+			$("#name_obj").val(title);
+			$("#addres_obj").val(addres);
+			// $("#url_fieldx").val(link);
+
+			var iter = +$(this).closest('.object-img').index()+1;
+			$("#iterx").val(iter);
 		});
 
-		
-		('ffsfs');
-
-		$(".js-validation-2").each(function() {
-			var it = $(this);
-			it.validate({
-				rules:{
-					/*
-					phone:{
-						required:true,
-						minlength:10,
-						maxlength:10,
-						phoneUS:true
-					},
-					*/
-					email:{
-						required:true,
-						email:true
-					},
-					name_feedback:{
-						required:true,
-					},
-					company_feedback:{
-						required:true,
-					},
-					comment_feedback:{
-						required:true,
-					},
-				},
-				messages: {
-					email:"неправильный email",
-					phone:"неправильный номер"
-				},
-				submitHandler: function() {
-					('fdsafsad');
-					it.find("input, textarea").val('');
-				},  
-			});
-
-		});
-
-		$(".js-validation-3").each(function() {
-			var it = $(this);
-			it.validate({
-				rules:{
-					/*
-					phone:{
-						required:true,
-						minlength:10,
-						maxlength:10,
-						phoneUS:true
-					},
-					*/
-					email_tz:{
-						required:true,
-						email:true
-					},
-					name_tz:{
-						required:true,
-					},
-					company_tz:{
-						required:true,
-					},
-					file_tz:{
-						required:true,
-					},
-				},
-				messages: {
-					email:"неправильный email",
-					phone:"неправильный номер"
-				},
-				submitHandler: function() {
-					('fdsafsad');
-					it.find("input, textarea").val('');
-				},  
-			});
-
-		});
-
-		$(".js-validation-4").each(function() {
-			var it = $(this);
-			it.validate({
-				rules:{
-					email:{
-						required:true,
-						email:true
-					},
-					login: {
-						required: true,
-					},
-					password: {
-						required: true,
-					},
-					passwordYet: {
-						required: true,
-						equalTo: "#new-password-yet", 
-					},
-				},
-				submitHandler: function() {
-					it.find("input, textarea").val('');
-				},  
-			});
-
-		});
-
-		$(".js-validation-5").each(function() {
-			var it = $(this);
-			it.validate({
-				rules:{
-					phone:{
-						required:true,
-						maxlength: 160,
-					},
-					compamy_name:{
-						required:true,
-					},
-					desc: {
-						required: true,
-						maxlength: 150,
-					},
-					fulldesc: {
-						required: true,
-						maxlength: 150,
-					},
-					year:{
-						digits: true,
-					},
-					url_site: {
-						required: true,
-						url: true,
-					},
-					count:{
-						digits: true,
-						required: true,
-					},
-				},
-				messages: {
-					// phone:"неправильный номер",
-					url_site: "неправильный url caйта",
-					url_inst: "неправильный url Instagram",
-					url_vk: "неправильный url Вконтакте",
-					url_fb: "неправильный url Facebook",
-					url_tw: "неправильный url Twitter",
 	
-				},
-				submitHandler: function() {
-					('fdsafsad');
-					it.find("input, textarea").val('');
-				},  
-			});
-
-		});
-
-		$(".js-validation-6").each(function() {
-			var it = $(this);
-			it.validate({
-				rules:{
-					/*
-					phone:{
-						required:true,
-						minlength:10,
-						maxlength:10,
-						phoneUS:true
-					},
-					*/
-					email:{
-						required:true,
-						email:true
-					},
-					name:{
-						required:true,
-					},
-					service:{
-					},
-					photo:{
-						required: false,
-					},
-					review:{
-						required:true,
-					},
-				},
-				messages: {
-					email:"неправильный email",
-					phone:"неправильный номер",
-				},
-				submitHandler: function() {
-					('fdsafsad');
-					it.find("input, textarea").val('');
-				},  
-			});
-
-		});
-
-		$(".js-validation-7").each(function() {
-			var it = $(this);
-			it.validate({
-				rules:{
-					phone:{
-						required:true,
-					},
-					email:{
-						required:true,
-						email:true
-					},
-					url: {
-						url: true,
-						required: true,	
-					},
-					name: {
-						required: true,	
-					},
-					company_name: {
-						required: true,	
-					},
-					comment: {
-						required: true,	
-					},
-					name: {
-						required: true,	
-					},
-				},
-				messages: {
-					email:"неправильный email",
-					phone:"неправильный номер"
-				},
-				submitHandler: function() {
-					('fdsafsad');
-					it.find("input, textarea").val('');
-				},  
-			});
-
-		});
-		$(".new-form-answer").each(function() {
-			var it = $(this);
-			it.validate({
-				rules:{
-					answer: {
-						required: true,	
-					},
-				},
-				messages: {
-					email:"неправильный email",
-					phone:"неправильный номер"
-				},
-				submitHandler: function() {
-					('fdsafsad');
-					it.find("input, textarea").val('');
-				},  
-			});
-
-		});
+		///Объекты -----------------------------------
+		
+		
 
 		// validation
 	});
