@@ -85,6 +85,8 @@ input.valid, textarea.valid { border: 1px solid green !important; }
 
 select.valid .jq-selectbox__select-text { border: 1px solid green !important; }
 
+#image-review { margin: 20px 0; }
+
 .contacts-info { position: relative; }
 
 #map { width: 100%; -webkit-transition: 0.3s; -o-transition: 0.3s; transition: 0.3s; display: -webkit-box; display: -ms-flexbox; display: flex; height: 400px; top: 100%; left: 0; z-index: 100; display: none; max-width: 100%; margin-bottom: 60px; }

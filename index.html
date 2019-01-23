@@ -1161,21 +1161,21 @@
                     <div class="form__cols">
                         <div class="form__item">
                             <label class="form__label form__label_important">Представьтесь, пожалуйста</label>
-                            <input class="input-2" type="text">
+                            <input class="input-2" type="text" name="name_feedback" required>
                         </div>
                         <div class="form__item">
                             <label class="form__label form__label_important">Название вашей компании</label>
-                            <input class="input-2" type="text">
+                            <input class="input-2" type="text" name="name" required>
                         </div>
                     </div>
                     <div class="form__cols">
                         <div class="form__item">
                             <label class="form__label form__label_important">Email</label>
-                            <input class="input-2" type="email" name="email">
+                            <input class="input-2" type="email" name="email" required>
                         </div>
                         <div class="form__item">
                             <label class="form__label">Контактный телефон</label>
-                            <input class="input-2 js-masked" type="tel" name="phone">
+                            <input class="input-2 js-masked" type="tel" name="phone" required>
                         </div>
                     </div>
                     <div class="form__item form__item_fixed">
@@ -1183,7 +1183,7 @@
                         <div class="select">
                             <select class="js-formstyler">
                                 <option data-hidden>&nbsp;</option>
-                                <option>Услуга 1</option>
+                                <option selected>Услуга 1</option>
                                 <option>Услуга 2</option>
                                 <option>Услуга 3</option>
                             </select>
@@ -1191,7 +1191,7 @@
                     </div>
                     <div class="form__item">
                         <label class="form__label form__label_important">Комментарии</label>
-                        <textarea class="textarea-1"></textarea>
+                        <textarea class="textarea-1" required></textarea>
                     </div>
                     <button class="form__button button">Заказать</button>
                     <div class="checkbox checkbox_small">
@@ -1213,21 +1213,21 @@
                     <div class="form__cols">
                         <div class="form__item">
                             <label class="form__label form__label_important">Представьтесь, пожалуйста</label>
-                            <input class="input-2" type="text">
+                            <input class="input-2" type="text" name="name_tz" required>
                         </div>
                         <div class="form__item">
                             <label class="form__label form__label_important">Название вашей компании</label>
-                            <input class="input-2" type="text">
+                            <input class="input-2" type="text" name="company_tz" required>
                         </div>
                     </div>
                     <div class="form__cols">
                         <div class="form__item">
-                            <label class="form__label form__label_important">Email</label>
-                            <input class="input-2" type="email" name="email">
+                            <label class="form__label">Контактный телефон</label>
+                            <input class="input-2 js-masked" type="tel" name="phone" required>
                         </div>
                         <div class="form__item">
-                            <label class="form__label">Контактный телефон</label>
-                            <input class="input-2 js-masked" type="tel" name="phone">
+                            <label class="form__label form__label_important">Email</label>
+                            <input class="input-2" type="email" name="email_tz" required>
                         </div>
                     </div>
                     <div class="form__item form__item_fixed">
@@ -1235,7 +1235,7 @@
                         <div class="select">
                             <select class="js-formstyler">
                                 <option data-hidden>&nbsp;</option>
-                                <option>Услуга 1</option>
+                                <option selected>Услуга 1</option>
                                 <option>Услуга 2</option>
                                 <option>Услуга 3</option>
                             </select>
@@ -1244,16 +1244,13 @@
                     <div class="docs">
                         <p class="docs__title"><span>Приложите ТЗ</span> В формате *.doc или *.pdf</p>
                         <ul class="docs__list">
-                            <li class="docs__item js-remove">
-                                <div class="docs__all">
-                                    <a class="docs__file" href="#"><span>Заявка на ремонт квартиры. doc</span></a>
-                                    <a class="docs__remove js-remove-button" href="javascript:void(0);"></a>
-                                </div>
-                            </li>
+                            
                         </ul>
                         <div class="add-doc js-file">
-                            <a class="add-doc__button js-file-button" href="javascript:void(0);"><span>Добавить файл</span></a>
-                            <input type="file">
+                            <input type="file" name="file" id="file" class="inputfile">
+                            <label for="file" class="add-doc__button js-file-button">
+                                <span>Добавить файл</span>
+                            </label>
                         </div>
                     </div>
                     <button class="form__button button">Отправить</button>

@@ -18,6 +18,41 @@ b.attr("data-mask-reverse")&&(e.reverse=!0);b.attr("data-mask-clearifnotmatch")&
 delete a.maskWatchers[this.selector];return this.each(function(){var b=a(this).data("mask");b&&b.remove().removeData("mask")})};a.fn.cleanVal=function(){return this.data("mask").getCleanVal()};a.applyDataMask=function(b){b=b||a.jMaskGlobals.maskElements;(b instanceof a?b:a(b)).filter(a.jMaskGlobals.dataMaskAttr).each(d)};h={maskElements:"input,td,span,div",dataMaskAttr:"*[data-mask]",dataMask:!0,watchInterval:300,watchInputs:!0,keyStrokeCompensation:10,useInput:!/Chrome\/[2-4][0-9]|SamsungBrowser/.test(window.navigator.userAgent)&&
 h("input"),watchDataMask:!1,byPassKeys:[9,16,17,18,36,37,38,39,40,91],translation:{0:{pattern:/\d/},9:{pattern:/\d/,optional:!0},"#":{pattern:/\d/,recursive:!0},A:{pattern:/[a-zA-Z0-9]/},S:{pattern:/[a-zA-Z]/}}};a.jMaskGlobals=a.jMaskGlobals||{};h=a.jMaskGlobals=a.extend(!0,{},h,a.jMaskGlobals);h.dataMask&&a.applyDataMask();setInterval(function(){a.jMaskGlobals.watchDataMask&&a.applyDataMask()},h.watchInterval)},window.jQuery,window.Zepto);
 
+
+;( function( $, window, document, undefined )
+{
+	$( '.inputfile' ).each( function()
+	{
+		var $input	 = $( this ),
+			$label	 = $input.next( 'label' ),
+			labelVal = $label.html();
+			console.log($label);
+
+		$input.on( 'change', function( e )
+		{
+			var fileName = '';
+
+			if( this.files && this.files.length > 1 )
+				fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+			else if( e.target.value )
+				fileName = e.target.value.split( '\\' ).pop();
+
+			if( fileName ) {
+				$(".docs__list").append('<li class="docs__item js-remove"><div class="docs__all"><div><span>'+fileName+'</span></a><a class="docs__remove js-remove-button" href="javascript:void(0);"></div></div></li>');
+			}
+			else
+				$label.html( labelVal );
+				console.log(fileName);
+		});
+
+		// Firefox bug fix
+		$input
+		.on( 'focus', function(){ $input.addClass( 'has-focus' ); })
+		.on( 'blur', function(){ $input.removeClass( 'has-focus' ); });
+	});
+})( jQuery, window, document );
+
+
 $.validator.setDefaults({
     // debug: true,
     validClass: "valid",
@@ -50,7 +85,9 @@ $.validator.setDefaults({
 });
 
 
-
+$(".js-file-button").on("click", function(){
+	$(this).closest(".js-file").find("input[type=file]").trigger("click");
+});
 
 (function($){
 	// viewport size
@@ -100,6 +137,20 @@ $.validator.setDefaults({
 				reader.readAsDataURL(input.files[0]);
 			}
 		}
+		function readURLl(input) {
+
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+		
+				reader.onload = function (e) {
+					$('#image-review').attr('src', e.target.result);
+					$(".add-photo__icon").css("display", "none");
+					$(".add-photo__text").text("");
+				};
+		
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
 		function readURLIMG(input) {
 
 			if (input.files && input.files[0]) {
@@ -114,6 +165,9 @@ $.validator.setDefaults({
 				reader.readAsDataURL(input.files[0]);
 			}
 		}
+		$(".js-file-button").click(function() {
+			$("input[type=file])").trigger("click");
+		})
 
 		$(".js-remove-button").click(function() {
 			alert('fdsafsda');
@@ -129,6 +183,9 @@ $.validator.setDefaults({
 		
 		$("#imgInput").change(function(){
 			readURL(this);
+		});
+		$("#imgrewiews").change(function(){
+			readURLl(this);
 		});
 
 
@@ -273,9 +330,6 @@ $.validator.setDefaults({
 		});
 
 		// file trigger
-		$(".js-file-button").on("click", function(){
-			$(this).closest(".js-file").find("input[type=file]").trigger("click");
-		});
 		// file trigger
 
 		// remove item
@@ -444,24 +498,25 @@ var handler1 = function(){
 	});
 	// esc click
 
+	if ($("#map").length >0) {
+		ymaps.ready(init);
+		function init () {
+			var x = $(".map-open").data('x');
+			var y = $(".map-open").data('y');
+			var myMap = new ymaps.Map("map", {
+			center: [x, y],
+			zoom: 16,
+			controls: ['zoomControl']
+		}),
+		myPlacemark = new ymaps.Placemark([x, y]);
+		myMap.geoObjects.add(myPlacemark);
+		myMap.behaviors.disable('scrollZoom');
 	
-	ymaps.ready(init);
-	function init () {
-		var x = $(".map-open").data('x');
-		var y = $(".map-open").data('y');
-		var myMap = new ymaps.Map("map", {
-		center: [x, y],
-		zoom: 16,
-		controls: ['zoomControl']
-	}),
-	myPlacemark = new ymaps.Placemark([x, y]);
-	myMap.geoObjects.add(myPlacemark);
-	myMap.behaviors.disable('scrollZoom');
-
-	$(".map-open").click(function(e) {
-		e.preventDefault()
-		$("#map").toggleClass("visible");
-	});
+		$(".map-open").click(function(e) {
+			e.preventDefault()
+			$("#map").toggleClass("visible");
+		});
+	}
 	
 }
 	

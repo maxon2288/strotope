@@ -147,10 +147,12 @@
                                             <div class="form__item">
                                                 <label class="form__label form__label_important">Ваше фото</label>
                                                 <div class="add-photo js-file">
-                                                    <input type="file" name="photo">
+                                                    <input type="file" id="imgrewiews" name="photo">
                                                     <a class="add-photo__button js-file-button" href="javascript:void(0);">
+                                                            
                                                         <div class="add-photo__fix-1">
                                                             <div class="add-photo__fix-2">
+                                                                <img src="" id="image-review" alt="">
                                                                 <div class="add-photo__icon"></div>
                                                                 <div class="add-photo__text">
                                                                     <span>Загрузить фото</span><span>или аватар</span>
@@ -186,7 +188,7 @@
                                     </div>
                                     <button class="form__button button">Оставить отзыв</button>
                                     <div class="checkbox checkbox_small">
-                                        <label><input class="js-formstyler" type="checkbox" checked="checked">Заполняя форму вы соглашаетесь, что данные будут использованы  против вас</label>
+                                        <label><input required class="js-formstyler" type="checkbox" checked="checked">Заполняя форму вы соглашаетесь, что данные будут использованы  против вас</label>
                                     </div>
                                 </form>
                             </div>

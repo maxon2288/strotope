@@ -193,6 +193,9 @@ $(document).ready(function() {
                     required:true,
                     email: true,
                 },
+                password: {
+                    required: true,
+                },
                 video_addres:{
                     required:true,
                 },

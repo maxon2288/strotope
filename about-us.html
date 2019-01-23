@@ -107,8 +107,6 @@
                         <a class="main-nav__link" href="#"><span>+Добавить отзыв</span></a>
                     </li>
                 </ul>
-            <img src="" alt="" class="img">
-            <a href="" class="link"> ссылка на видос</a> <br>
             <!-- <iframe class="iframe" width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
                 <div class="articles-wrap articles-item-wrap about-content">
                     <div class="articles-item-row">
@@ -313,10 +311,10 @@
                 <div class="form__top">
                     <p class="form__title">Вход</p>
                 </div>
-                <form>
+                <form class="new-form-sign">
                     <div class="form__item">
                         <label class="form__label">Логин</label>
-                        <input class="input-2" type="text">
+                        <input class="input-2" name="email" type="text">
                     </div>
                     <div class="form__item form__item_fixed">
                         <div class="forget">
@@ -327,12 +325,22 @@
                                 <a class="forget__link" href="#">Забыли пароль?</a>
                             </div>
                         </div>
-                        <input class="input-2" type="password">
+                        <input class="input-2" name="password" type="password">
                     </div>
                     <button class="form__button button" type="submit">Войти</button>
                     <div class="socials-2">
                         <span class="socials-2__text">либо через соцсеть</span>
-                        <div id="uLogin_dd21b22c" data-uloginid="dd21b22c"></div>
+                        <ul class="socials-2__list">
+                            <li class="socials-2__item">
+                                <a class="socials-2__link socials-2__link_icon-1" href="#"></a>
+                            </li>
+                            <li class="socials-2__item">
+                                <a class="socials-2__link socials-2__link_icon-2" href="#"></a>
+                            </li>
+                            <li class="socials-2__item">
+                                <a class="socials-2__link socials-2__link_icon-3" href="#"></a>
+                            </li>
+                        </ul>
                     </div>
                     <div class="no-login">
                         <span class="no-login__text">У вас нет аккаунта?</span>
