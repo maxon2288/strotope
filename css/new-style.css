@@ -85,6 +85,8 @@ input.valid, textarea.valid { border: 1px solid green !important; }
 
 select.valid .jq-selectbox__select-text { border: 1px solid green !important; }
 
+.jq-scroll li:nth-child(1) { display: none; }
+
 #image-review { margin: 20px 0; }
 
 .contacts-info { position: relative; }

@@ -317,7 +317,7 @@ $(".js-file-button").on("click", function(){
 		$('.box-sort__item').each(function() {
 			var it = $(this);
 			it.find(".js-filter").click(function() {
-				$(".filter__drop").removeClass("visible");
+				// $(".filter__drop").removeClass("visible");
 				it.find(".filter__drop").toggleClass("visible");
 			});
 		});

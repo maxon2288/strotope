@@ -12,6 +12,11 @@ select {
         }
     }
 }
+.jq-scroll {
+    li:nth-child(1){
+        display: none;
+    }
+}
 #image-review {
     margin: 20px 0;
 }
