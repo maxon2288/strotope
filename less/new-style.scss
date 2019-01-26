@@ -157,6 +157,17 @@ input, textarea {
         }
     }
 }
+.checkbox {
+    label {
+        input {
+            &:checked {
+                & ~ div {
+                    background-color: red;
+                }
+            }
+        }
+    }
+}
 select {
     &.valid{
         .jq-selectbox__select-text {

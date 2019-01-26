@@ -315,13 +315,6 @@ $.validator.setDefaults({
 				it.find(".filter__drop").toggleClass("visible");
 			});
 		});
-		$(".filter__drop").each(function() {
-			var it = $(this);
-			it.find(".filter__chek-item").click(function() {
-				it.closest(".box-sort__item").find('.js-filter-val').text(it.find(".new-count:checked").length)
-			});
-			$('.js-filter-val').text(it.find(".new-count:checked").length)
-		});
 
 		// file trigger
 		// file trigger
