@@ -86,7 +86,7 @@ $.validator.setDefaults({
 
 
 $(".js-file-button").on("click", function(){
-	$(this).closest(".js-file").find("input[type=file]").trigger("click");
+	$(this).closest(".js-file").find("input[type='file']").trigger("click");
 });
 
 (function($){
@@ -165,9 +165,6 @@ $(".js-file-button").on("click", function(){
 				reader.readAsDataURL(input.files[0]);
 			}
 		}
-		$(".js-file-button").click(function() {
-			$("input[type=file])").trigger("click");
-		})
 
 		$(".js-remove-button").click(function() {
 			alert('fdsafsda');
@@ -177,9 +174,12 @@ $(".js-file-button").on("click", function(){
 			$(this).closest(".js-remove").remove();
 		});
 
-		$("#object-img-upload").change(function() {
+		$(".object-img-upload").change(function() {
 			readURLIMG(this);
 		});
+		// $("#object-img-upload2").change(function() {
+		// 	readURLIMG(this);
+		// });
 		
 		$("#imgInput").change(function(){
 			readURL(this);
@@ -299,20 +299,6 @@ $(".js-file-button").on("click", function(){
 		});
 		// js slide
 
-		// formstyler
-		if($('input[type=checkbox].js-formstyler').length){
-			$('input[type=checkbox].js-formstyler').styler();
-		}
-		if($('select.js-formstyler').length){
-			$('select.js-formstyler').styler({
-				onSelectClosed:function(){
-					if($(this).find("option[data-hidden]:selected").length==0){
-						$(this).addClass("hide-selected");
-					}
-				}
-			});
-		}
-		// formstyler
 
 		$('.box-sort__item').each(function() {
 			var it = $(this);
@@ -376,7 +362,9 @@ $(".js-file-button").on("click", function(){
 
 		// validation
 
-		
+		$(document).ready(function() {
+			$('select').niceSelect();
+		});
 		
 		$.validator.addMethod("regx", function(value, element, regexpr) {      
 			return regexpr.test(value);
@@ -404,8 +392,8 @@ $(".js-file-button").on("click", function(){
 		///Объекты -----------------------------------  
 
 		$('body').on('click','.object__edit-object', function(e)  {
-			var it = $(this).closest(".object-img");
 			e.preventDefault();
+			var it = $(this).closest(".object-img");
 			// var link = it.find(".object__image").attr("href");
 			// var img = it.find(".object__image").attr("style");
 			var title = it.find(".object__title").text();
@@ -418,6 +406,12 @@ $(".js-file-button").on("click", function(){
 
 			var iter = +$(this).closest('.object-img').index()+1;
 			$("#iterx").val(iter);
+			$(".edit-object-form").find('.js-remove').remove();
+			it.find(".object-append-link").each(function() {
+				var valHref = $(this).attr("href");
+				console.log(valHref);
+				$(".edit-object-form").find('.photos').append('<li class="photos__item js-remove"><a class="photos__image photo-item-img" href="'+valHref+'" style="background-image:url('+valHref+');" data-fancybox="new-gal-1"></a><a class="photos__remove js-remove-button" href="javascript:void(0);">Удалить</a></li>')
+			})
 		});
 		$(document).on('click', ".object__delete", function(e){
 			e.preventDefault()
@@ -498,27 +492,29 @@ var handler1 = function(){
 	});
 	// esc click
 
+	
 	if ($("#map").length >0) {
 		ymaps.ready(init);
 		function init () {
-			var x = $(".map-open").data('x');
-			var y = $(".map-open").data('y');
 			var myMap = new ymaps.Map("map", {
-			center: [x, y],
-			zoom: 16,
-			controls: ['zoomControl']
-		}),
-		myPlacemark = new ymaps.Placemark([x, y]);
-		myMap.geoObjects.add(myPlacemark);
-		myMap.behaviors.disable('scrollZoom');
-	
-		$(".map-open").click(function(e) {
-			e.preventDefault()
-			$("#map").toggleClass("visible");
-		});
+				center: [55.810182, 37.533939],
+				zoom: 16,
+				controls: ['zoomControl']
+			}),
+			myPlacemark = new ymaps.Placemark([55.810182, 37.533939]);
+			myMap.geoObjects.add(myPlacemark);
+			myMap.behaviors.disable('scrollZoom');
+		
+			$(".map-open").click(function(e) {
+				e.preventDefault()
+				$("#map").addClass("visible");
+				var x = $(this).data('x');
+				var y = $(this).data('y');
+				console.log(x);
+				// myMap.panTo([x, y], {duration: 2000});
+				myMap.setCenter([x, y], 15);
+			});
+		}	
 	}
-	
-}
-	
 	
 })(jQuery);

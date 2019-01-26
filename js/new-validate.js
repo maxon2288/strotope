@@ -55,11 +55,11 @@ $(document).ready(function() {
                 var yt_link = "https://www.youtube.com/embed/" + yt_id;
                 // $('.object__image-link').attr("href", yt_link);
                 // $('.object__image-link').css("background-image", "url("+yt_img+ ")");
-                $("#objects-videos").append('<li class="object object-video"><a class="object__image" data-fancybox href="'+ yt_link +'" style="background-image: url('+ yt_img +')"></a><h3 class="object__title">'+ name +'</h3><p class="object__text">'+ addres +'</p><div class="object__links"><a class="object__edit" href="#edit-video" data-fancybox>Редактировать</a><a class="object__delete" href="#">Удалить</a></div></li>');
+                $("#objects-videos").append('<li class="object object-video"><a class="object__image" data-fancybox href="'+ yt_link +'" style="background-image: url('+ yt_img +')"></a><h3 class="object__title">'+ name +'</h3><p class="object__text">'+ addres +'</p><div class="object__links"><a class="object__edit" href="#edit-video" data-fancybox>Редактировать</a><a class="object__delete" href="#">Удалить</a></div><input name="video_name[]" type="hidden" value="'+name +'"><input name="video_name[]" type="hidden" value="'+addres +'"><input name="video_name[]" type="hidden" value="'+yt_link +'"></li>');
             },
         });
     });
-
+    var video_counter = 0;
     $(".edit-video-form").each(function() {
         var itis = $(this);
         itis.validate({
@@ -100,8 +100,11 @@ $(document).ready(function() {
                 it.find(".object__image").css("background-image", "url("+yt_img+ ")");
                 it.find(".object__title").text(namex);
                 it.find(".object__text").text(addresx);
-                
+                it.find("input").remove();
+                it.append('<input name="video_name[]" type="hidden" value="'+namex +'"><input name="video_name[]" type="hidden" value="'+addresx +'"><input name="video_name[]" type="hidden" value="'+yt_link +'"></input>');
+
             },  
+            // <input name="video_name[]" type="hidden" value="'+name +'"><input name="video_name[]" type="hidden" value="'+addres +'"><input name="video_name[]" type="hidden" value="'+yt_link +'"></input>
         });
     });
 
@@ -122,15 +125,20 @@ $(document).ready(function() {
                 it.find('input').val("");
 
                 var imgUrl= $(".photo-item-img").attr("href");
-                
                 $(".fancybox-button--close").trigger("click");
-                $("#objects-images").append('<li class="object object-img"><a class="object__image" data-fancybox style="background-image: url('+imgUrl+');" href="'+imgUrl+'"></a><h3 class="object__title">'+name+'</h3><p class="object__text">'+addres+'</p><div class="object__links"><a class="object__edit-object" href="#edit-object-form">Редактировать</a><a class="object__delete" href="#">Удалить</a></div></li>');
+                $("#objects-images").append('<li class="object object-img"><div class="object__image"  style="background-image: url('+imgUrl+');"></div><h3 class="object__title">'+name+'</h3><p class="object__text">'+addres+'</p><div class="object__links"><a class="object__edit-object" >Редактировать</a><a class="object__delete" href="#">Удалить</a></div></li>');
+                var index = +$("#objects-images .object:last-child").index() + 1;
                 var fdsajklfdsa = $(".js-remove").attr("href");
                 $("#edit_objectName").val(name)
                 $("#edit_objectAddres").val(addres)
-            },  
+                it.find(".photo-item-img").each(function() {
+                    var images = $(this).attr("href");
+                    console.log(images);
+                    $(".object-img:nth-child("+index+")").find(".object__image").append('<a data-fancybox="data-gallery-5" class="object-append-link" href="'+images+'"></a>')
+                })
+                it.find(".js-remove").remove();
+            },
         });
-
     });
 
     $(".edit-object-form").each(function() {
@@ -147,16 +155,23 @@ $(document).ready(function() {
             
             submitHandler: function() {
                 var it = $('.object-img:nth-child('+itis.find('#iterx').val()+')');
-                
                 // var gavno = itis.find('#iterx').val();
                 var it = $('.object-img:nth-child('+itis.find('#iterx').val()+')');
-                $(".fancybox-button--close").trigger("click");
                 var namex = $("#edit_objectName").val();
                 var addresx = $("#edit_objectAddres").val();
-                itis.find('input, textarea').val("");
                 it.find(".object__title").text(namex);
                 it.find(".object__text").text(addresx);
-                // var imgUrl= $(".photo-item-img").attr("href");
+                
+                itis.find(".photo-item-img").each(function() {
+                    var images = $(this).attr("href");
+                    $(".object-append-link").remove();
+                    $(".object__image").append('<a data-fancybox="data-gallery-5" class="object-append-link" href="'+images+'"></a>')
+                    it.find(".object__image").css("background-image", "url("+images+")");
+                })
+                console.log("fdsafsdaasfd");
+                itis.find('input, textarea').val("");
+                $(".fancybox-button--close").trigger("click");
+
             },  
         });
     });
@@ -377,7 +392,6 @@ $(document).ready(function() {
                 phone:"неправильный номер",
             },
             submitHandler: function() {
-                ('fdsafsad');
                 it.find("input, textarea").val('');
             },  
         });
