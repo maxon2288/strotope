@@ -55,7 +55,7 @@ $(document).ready(function() {
                 var yt_link = "https://www.youtube.com/embed/" + yt_id;
                 // $('.object__image-link').attr("href", yt_link);
                 // $('.object__image-link').css("background-image", "url("+yt_img+ ")");
-                $("#objects-videos").append('<li class="object object-video"><a class="object__image" data-fancybox href="'+ yt_link +'" style="background-image: url('+ yt_img +')"></a><h3 class="object__title">'+ name +'</h3><p class="object__text">'+ addres +'</p><div class="object__links"><a class="object__edit" href="#edit-video" data-fancybox>Редактировать</a><a class="object__delete" href="#">Удалить</a></div><input name="video_name[]" type="hidden" value="'+name +'"><input name="video_name[]" type="hidden" value="'+addres +'"><input name="video_name[]" type="hidden" value="'+yt_link +'"></li>');
+                $("#objects-videos").append(createNewVideoHtml(yt_link, yt_img, name, addres));
             },
         });
     });
@@ -108,19 +108,7 @@ $(document).ready(function() {
         });
     });
 
-    function createNewObjectHtml(name, addres, imgUrl) {
-        return `
-            <li class="object object-img">
-            <div class="object__image"  style="background-image: url(${imgUrl});"></div>
-            <h3 class="object__title"> ${name} </h3>
-            <p class="object__text"> ${addres} </p>
-            <div class="object__links">
-            <a class="object__edit-object" >Редактировать</a>
-            <a class="object__delete" href="#">Удалить</a>
-            </div>
-            </li>
-        `;
-    }
+    
 
     $(".add-object-form").each(function() {
         var it = $(this);
@@ -141,6 +129,7 @@ $(document).ready(function() {
                 var imgUrl= $(".photo-item-img").attr("href");
                 $(".fancybox-button--close").trigger("click");
                 $("#objects-images").append(createNewObjectHtml(name, addres, imgUrl));
+                console.log(createNewObjectHtml);
                 var index = +$("#objects-images .object:last-child").index() + 1;
                 var fdsajklfdsa = $(".js-remove").attr("href");
                 $("#edit_objectName").val(name)
