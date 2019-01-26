@@ -108,6 +108,20 @@ $(document).ready(function() {
         });
     });
 
+    function createNewObjectHtml(name, addres, imgUrl) {
+        return `
+            <li class="object object-img">
+            <div class="object__image"  style="background-image: url(${imgUrl});"></div>
+            <h3 class="object__title"> ${name} </h3>
+            <p class="object__text"> ${addres} </p>
+            <div class="object__links">
+            <a class="object__edit-object" >Редактировать</a>
+            <a class="object__delete" href="#">Удалить</a>
+            </div>
+            </li>
+        `;
+    }
+
     $(".add-object-form").each(function() {
         var it = $(this);
         it.validate({
@@ -126,7 +140,7 @@ $(document).ready(function() {
 
                 var imgUrl= $(".photo-item-img").attr("href");
                 $(".fancybox-button--close").trigger("click");
-                $("#objects-images").append('<li class="object object-img"><div class="object__image"  style="background-image: url('+imgUrl+');"></div><h3 class="object__title">'+name+'</h3><p class="object__text">'+addres+'</p><div class="object__links"><a class="object__edit-object" >Редактировать</a><a class="object__delete" href="#">Удалить</a></div></li>');
+                $("#objects-images").append(createNewObjectHtml(name, addres, imgUrl));
                 var index = +$("#objects-images .object:last-child").index() + 1;
                 var fdsajklfdsa = $(".js-remove").attr("href");
                 $("#edit_objectName").val(name)
