@@ -21,15 +21,13 @@ h("input"),watchDataMask:!1,byPassKeys:[9,16,17,18,36,37,38,39,40,91],translatio
 
 ;( function( $, window, document, undefined )
 {
-	$( '.inputfile' ).each( function()
-	{
+	$( '.inputfile' ).each( function(){
 		var $input	 = $( this ),
 			$label	 = $input.next( 'label' ),
 			labelVal = $label.html();
 			console.log($label);
 
-		$input.on( 'change', function( e )
-		{
+		$input.on( 'change', function( e ){
 			var fileName = '';
 
 			if( this.files && this.files.length > 1 )
@@ -38,7 +36,17 @@ h("input"),watchDataMask:!1,byPassKeys:[9,16,17,18,36,37,38,39,40,91],translatio
 				fileName = e.target.value.split( '\\' ).pop();
 
 			if( fileName ) {
-				$(".docs__list").append('<li class="docs__item js-remove"><div class="docs__all"><div><span>'+fileName+'</span></a><a class="docs__remove js-remove-button" href="javascript:void(0);"></div></div></li>');
+				$(".docs__list").append(`
+				<li class="docs__item js-remove">
+					<div class="docs__all">
+						<div>
+							<span>${fileName}</span>
+							<a class="docs__remove js-remove-button" href="javascript:void(0);">
+							</a>
+						</div>
+					</div>
+					<input type="hidden" name="techtask_docs[]">
+				</li>`);
 			}
 			else
 				$label.html( labelVal );
@@ -85,9 +93,9 @@ $.validator.setDefaults({
 });
 
 
-$(".js-file-button").on("click", function(){
-	$(this).closest(".js-file").find("input[type='file']").trigger("click");
-});
+// $(".js-file-button").on("click", function(){
+// 	$(this).closest(".js-file").find("input[type='file']").trigger("click");
+// });
 
 (function($){
 	// viewport size
