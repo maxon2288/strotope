@@ -118,12 +118,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="form__item">
-                                                    <label class="form__label">Краткое описание <span>(не более 150 символов)</span></label>
-                                                    <textarea class="textarea-1" name="desc" ></textarea>
+                                                    <label class="form__label">Краткое описание <span>(не более <span class="charNum">150</span> символов)</span></label>
+                                                    <textarea class="textarea-1 textareaCount" name="dessc" maxlength="150"></textarea>
                                                 </div>
                                                 <div class="form__item">
-                                                    <label class="form__label">Подробное описание <span>(не более 150 символов)</span></label>
-                                                    <textarea class="textarea-1" name="fullDesc" ></textarea>
+                                                    <label class="form__label">Подробное описание <span>(не более <span class="charNum">300</span> символов)</span></label>
+                                                    <textarea class="textarea-1 textareaCount" name="fullDesc" maxlength="300"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -392,7 +392,6 @@
             <!-- TAB END -->
         </div>
         <!-- POPUP END -->
-        
         <!-- BEGIN POPUP -->
         <div class="popup" id="add-video">
             <button class="popup__close js-close-popup"></button>
@@ -418,6 +417,8 @@
                 </form>
             </div>
         </div>
+        <!-- POPUP END -->
+        <!-- BEGIN POPUP -->
         <div class="popup" id="edit-video">
             <button class="popup__close js-close-popup"></button>
             <div class="form">
@@ -443,6 +444,7 @@
                 </form>
             </div>
         </div>
+        <!-- POPUP END -->
         <!-- BEGIN POPUP -->
         <div class="popup" id="add-object">
             <button class="popup__close js-close-popup"></button>
@@ -486,6 +488,8 @@
 
             </div>
         </div>
+        <!-- POPUP END -->
+        <!-- BEGIN POPUP -->
         <div class="popup" id="edit-object-form">
             <button class="popup__close js-close-popup"></button>
             <div class="form">
@@ -502,6 +506,27 @@
                     <div class="form__item form__item_fixed">
                         <label class="form__label form__label_important">Адрес объекта</label>
                         <input class="input-2" type="text" name="addresObject" id="edit_objectAddres">
+                    </div>
+                    <div class="form__item">
+                        <label class="form__label form__label_important">Фото <span>(размер не более 250 Кб)</span></label>
+                        <ul class="photos"> 
+                            <li class="photos__item">
+                                <div class="add-photo js-file">
+                                    <a class="add-photo__button js-file-button" href="javascript:void(0);">
+                                        <div class="add-photo__fix-1">
+                                            <div class="add-photo__fix-2">
+                                                <div class="add-photo__icon"></div>
+                                                <div class="add-photo__text">
+                                                    <span>Добавить фото</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <input type="file" class="object-img-upload2">
+                                </div>
+                            </li>
+                            
+                        </ul>
                     </div>
                     <button class="form__button button">Добавить</button>
                 </form>

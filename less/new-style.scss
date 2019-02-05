@@ -270,3 +270,78 @@ select {
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
+.form-block__cols {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.form-block__right { 
+    @media screen and (max-width: 1024px) {
+        width: 100%;
+        padding: 280px 0 0;
+    }
+    @media screen and (max-width: 767px) {
+        padding: 0;
+    }
+}
+.form-block__left {
+    flex-grow: 1;
+    display: flex;
+    @media screen and (max-width: 1024px) {
+        padding-right: 0;
+    }
+    @media screen and (max-width: 767px) {
+        display: flex;
+        max-width: 100%;
+        width: 100%;
+    }
+}
+.form-block__max {
+    max-width: 100%;
+    width: 100%;
+}
+.form__cols {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+.form__item {
+    display: flex !important;
+    flex-direction: column; 
+    justify-content: flex-end;
+}
+
+.m-ckeck {
+    cursor: pointer;
+    label {
+        display: flex;
+        cursor: pointer;    
+        user-select: none;
+        input{
+            display: none;
+            &:checked {
+                & ~ div {
+                    &:before {
+                        background: url(../img/sprite.png) no-repeat -31px 2px;
+                    }
+                }
+            }
+        }
+        div {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border: 1px solid #dfdfdf;
+            position: relative;
+            &:before {
+                position: absolute;
+                top: 0;
+                left: 0;    
+                content: '';
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}

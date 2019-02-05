@@ -1,0 +1,23 @@
+/* base variables */
+/* color variables */
+/* title variables */
+.title-1 {
+  font: bold 48px/1.1 'TT Prosto Sans';
+}
+.title-2 {
+  font: bold 48px/1.1 'TT Prosto Sans';
+}
+.title-3 {
+  font: bold 36px/1.15 'TT Prosto Sans';
+}
+.title-4 {
+  font: bold 36px/1.15 'TT Prosto Sans';
+}
+.title-5 {
+  font: bold 24px/1.2 'TT Prosto Sans';
+}
+.title-6 {
+  font: bold 24px/1.2 'TT Prosto Sans';
+}
+
+/*# sourceMappingURL=_variables.css.map */
