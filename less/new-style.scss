@@ -341,7 +341,51 @@ select {
                 content: '';
                 width: 100%;
                 height: 100%;
+                
             }
         }
+    }
+}
+
+
+.article__img-content {
+    left-content-container: 200px;
+}
+.articles-item-cont img {
+    margin: 20px 0;
+}
+.filter__chek-list {
+    max-height: 328px;
+    overflow-y: auto;   
+}
+.ranking-content__col {
+    max-width: 200px;
+    height: 70px;
+    position: relative;
+    .ranking-content__image{
+        width: 100%;
+        background-size: cover;
+        height: 100%;
+        background-position: center center;
+    }
+    img {
+        display: none;
+    }
+}
+
+.administration {
+    padding: 12px 25px;
+    border: 1px solid #6daaab;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    transition: 0.3s;
+    color: #6daaab;
+    &:hover {
+        background-color: #6daaab;
+        color: white;
     }
 }

@@ -162,6 +162,8 @@ $(".js-file-button").on("click", function(){
 		}
 
 		
+
+		
 		function readURLIMG(input) {
 
 			if (input.files && input.files[0]) {
@@ -188,7 +190,7 @@ $(".js-file-button").on("click", function(){
 		})
 		$(".textareaCount").change(function(val) {
 			var len = $(this).val().length;
-			var maxLength = $(this).attr("maxlength");
+			var maxLength = $(this).attr("maxlength");	
 			$(this).closest(".form__item").find('.charNum').text(maxLength - len);
 		})
 		$("body").on("click", ".js-remove-button", function() {
@@ -534,5 +536,41 @@ var handler1 = function(){
 			});
 		}	
 	}
+
+
+	//// НОВЫЕ СКРИПТЫ 
+
+	$(".ranking-content__col").each(function() {
+		var it = $(this);
+		var src = it.find("img").attr("src");
+		it.find(".ranking-content__image").css('background-image', 'url('+src+')');
+		console.log(src);
+	})
+
+
+	var list = $('#environments').find("li"); //change to desired list parent element
+	$('#envSearch').keyup(function() { // change to desirec input element
+		($(this).val() == '') ? list.show(): search(this);
+		// console.log(list);
+	});
+	$(document).click(function(r) {
+		if (r.target == $(".filter__drop")) {
+			console.log("привет")
+		}
+	})
+
+	var search = function(inElem) {
+		list.hide();
+		$.each(list, function(key, value) {
+			console.log(key, value);
+		});
+		console.log(list);
+		for (var i = 0; i < list.length; i++) {
+			if (list[i].textContent.toLowerCase().indexOf($(inElem).val().toLowerCase()) >= 0) {
+				$(list[i]).show();
+			}
+		}
+	};
+	 
 	
 })(jQuery);
